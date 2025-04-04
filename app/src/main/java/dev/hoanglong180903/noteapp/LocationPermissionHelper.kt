@@ -2,18 +2,21 @@ package dev.hoanglong180903.noteapp
 
 import android.Manifest
 import android.app.Activity
+import android.app.ProgressDialog
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.recreate
 import com.mapbox.common.location.compat.permissions.PermissionsListener
 import com.mapbox.common.location.compat.permissions.PermissionsManager
+import kotlinx.coroutines.flow.combine
 import java.lang.ref.WeakReference
 
 class LocationPermissionHelper(val activity: WeakReference<Activity>) {
     private lateinit var permissionsManager: PermissionsManager
-
     fun checkPermissions(onMapReady: () -> Unit) {
         if (PermissionsManager.areLocationPermissionsGranted(activity.get())) {
             onMapReady()
@@ -82,4 +85,5 @@ class LocationPermissionHelper(val activity: WeakReference<Activity>) {
 //            }
 //        }
 //    }
+
 }
